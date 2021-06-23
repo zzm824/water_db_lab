@@ -19,3 +19,9 @@ impl DataType {
         }
     }
 }
+
+#[derive(Serialize, Deserialize)]
+#[non_exhaustive]
+pub enum Datum {
+    U32(u32),
+}

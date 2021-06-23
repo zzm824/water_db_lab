@@ -2,6 +2,9 @@ use crate::data_types::DataType;
 use crate::WaterResult;
 use serde::{Deserialize, Serialize};
 use sled::Db;
+use std::path::Path;
+
+const EXAMPLE_JSON: &str = r#"{"name":"Example","column_types":["U32","U32"],"data":[[123,0,0,0],[176,1,0,0]]}"#;
 
 /// A Water Storage Engine using *Sled* in implementation.
 pub struct WaterSledEngine {
@@ -9,8 +12,14 @@ pub struct WaterSledEngine {
 }
 
 impl WaterSledEngine {
-    pub fn open(filename: &str) -> WaterResult<Self> {
-        let db = sled::open(filename)?;
+    pub fn example() -> WaterResult<Self> {
+        let ret = sled::open("Example.db")?;
+
+        todo!()
+    }
+    pub fn open(filename: impl AsRef<Path>) -> WaterResult<Self> {
+        let p = filename.as_ref();
+        let db = sled::open(p)?;
 
         todo!();
 
@@ -54,7 +63,7 @@ mod test {
 
         assert_eq!(
             serde_json::to_string(&t).unwrap(),
-            r#"{"name":"Example","column_types":["U32","U32"],"data":[[123,0,0,0],[176,1,0,0]]}"#
+            EXAMPLE_JSON
         );
     }
 }

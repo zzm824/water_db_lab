@@ -9,6 +9,7 @@ use thiserror::Error;
 mod compiler;
 mod data_types;
 mod engines;
+mod vm;
 
 /// A handle to a Water DB instance.
 pub struct WaterDb {}
@@ -33,10 +34,6 @@ pub enum WaterError {
 
 pub type WaterResult<T> = Result<T, WaterError>;
 
-/// A Water ASM program compiled from SQL statements. Water VM can execute it.
-pub struct WaterAsm {
-    // todo
-}
 
 #[cfg(test)]
 mod test {

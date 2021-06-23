@@ -2,7 +2,9 @@ use sqlparser::dialect::GenericDialect;
 use sqlparser::parser::{Parser, ParserError};
 use std::backtrace::Backtrace;
 use thiserror::Error;
-use crate::{WaterAsm, WaterResult};
+use crate::{WaterResult};
+use crate::vm::WaterAsm;
+use sqlparser::ast::Statement;
 
 
 /// Compiles the sql into Water ASM.

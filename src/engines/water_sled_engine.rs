@@ -45,13 +45,16 @@ mod test {
     use super::*;
 
     #[test]
-    fn test() {
+    fn test_table_generation() {
         let t = Table {
             name: "Example".into(),
             column_types: vec![DataType::U32, DataType::U32],
             data: vec![123u32.to_ne_bytes().to_vec(), 432u32.to_ne_bytes().to_vec()],
         };
 
-        println!("{}", serde_json::to_string(&t).unwrap());
+        assert_eq!(
+            serde_json::to_string(&t).unwrap(),
+            r#"{"name":"Example","column_types":["U32","U32"],"data":[[123,0,0,0],[176,1,0,0]]}"#
+        );
     }
 }

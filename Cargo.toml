@@ -10,3 +10,6 @@ thiserror = "*"
 
 sqlparser = "0.9"
 sled = "0.34"
+
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"

@@ -1,3 +1,6 @@
+#![allow(unused_imports)]
+#![allow(dead_code)]
+#![feature(backtrace)]
 mod compiler;
 
 /// A handle to a Water DB instance.
